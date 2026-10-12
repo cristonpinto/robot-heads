@@ -55,6 +55,22 @@ Each state has its own face on the screen, its own motion and its own antenna li
 
 The list is exported as `robotHeadStates`.
 
+## Owl
+
+A second mascot: a cute feathered owl in real 3D, with big glossy amber eyes, orange ear tufts and brows, layered wings and glowing circuit lines. It has the same states as the robot and lives in its own entry, because it renders with [three.js](https://threejs.org) (WebGL) and the robot does not.
+
+```bash
+npm install robot-heads three
+```
+
+```tsx
+import { OwlHead } from 'robot-heads/owl';
+
+<OwlHead state="thinking" size={200} />
+```
+
+Props: `state`, `size`, `color` (plumage), `accentColor`, `faceColor`, `glowColor`, `speed`, `paused`, `interactive`, `floorShadow`, `seed`. States are the robot's: `idle`, `thinking`, `searching`, `listening`, `speaking`, `working`, `happy`, `error`, `sleeping` (exported as `owlHeadStates`). It follows the pointer, and a click makes it hop and spin. Each owl owns a WebGL context, so keep the number on a page small. Try it in the playground at `/?owl`.
+
 ## Props
 
 ```tsx
@@ -112,6 +128,7 @@ pnpm run deploy    # build and deploy the playground Worker
 src/            the library
   RobotHead.tsx   the component
   tv/             the TV head: geometry, lighting, faces, motion, renderer
+  owl/            the owl (three.js): model, states, component
 site/           the playground (Vite + Cloudflare Worker)
 ```
 

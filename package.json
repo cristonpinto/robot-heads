@@ -17,7 +17,8 @@
     "llm",
     "chatbot",
     "led",
-    "status"
+    "status",
+    "owl"
   ],
   "homepage": "https://github.com/fayazara/robot-heads#readme",
   "bugs": {
@@ -44,7 +45,17 @@
         "default": "./dist/index.cjs"
       }
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./owl": {
+      "import": {
+        "types": "./dist/owl/index.d.ts",
+        "default": "./dist/owl.js"
+      },
+      "require": {
+        "types": "./dist/owl/index.d.ts",
+        "default": "./dist/owl.cjs"
+      }
+    }
   },
   "files": [
     "dist"
@@ -58,16 +69,24 @@
     "prepublishOnly": "pnpm run typecheck && pnpm run build"
   },
   "peerDependencies": {
-    "react": ">=18.0.0"
+    "react": ">=18.0.0",
+    "three": ">=0.160.0"
   },
   "devDependencies": {
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
+    "@types/three": "^0.186.0",
     "@vitejs/plugin-react": "^4.3.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "three": "^0.186.1",
     "typescript": "^5.6.3",
     "vite": "^5.4.11",
     "vite-plugin-dts": "^3.9.1"
+  },
+  "peerDependenciesMeta": {
+    "three": {
+      "optional": true
+    }
   }
 }

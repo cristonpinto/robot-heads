@@ -5,15 +5,15 @@ import { resolve } from 'path';
 
 /* builds the library; the playground in site/ has its own config */
 export default defineConfig({
-  plugins: [react(), dts({ include: ['src'], rollupTypes: true, tsconfigPath: './tsconfig.json' })],
+  plugins: [react(), dts({ include: ['src'], rollupTypes: false, tsconfigPath: './tsconfig.json' })],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: { index: resolve(__dirname, 'src/index.ts'), owl: resolve(__dirname, 'src/owl/index.ts') },
       formats: ['es', 'cjs'],
-      fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
+      fileName: (format, name) => `${name}.${format === 'es' ? 'js' : 'cjs'}`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: ['react', 'react-dom', 'react/jsx-runtime', /^three(\/.*)?$/],
     },
   },
 });
