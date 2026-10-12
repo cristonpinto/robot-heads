@@ -3,14 +3,14 @@ import { OwlHead, owlHeadStates, type OwlState } from '../../src/owl';
 
 const hints: Record<OwlState, string> = {
   idle: 'Looks around, blinks, hops now and then.',
-  thinking: 'Eyes up, one brow raised, head tilted.',
-  searching: 'Sweeps its head side to side, wings ready.',
-  listening: 'Head cocked, tufts perked, eyes wide.',
+  thinking: 'Eyes up, one brow raised, dots above.',
+  searching: 'Sweeps its head side to side.',
+  listening: 'Head cocked, tufts perked, sound waves.',
   speaking: 'The beak moves with the words.',
-  working: 'Head down, squinting, wings flicking.',
-  happy: 'Bouncing, smiling eyes, wings up.',
-  error: 'Shakes its head, circuits blink red.',
-  sleeping: 'Eyes closed, drooped, breathing slowly.',
+  working: 'Head down, squinting, circuits pulsing.',
+  happy: 'Bouncing, smiling eyes, sparkles.',
+  error: 'Shakes its head. Red X eyes.',
+  sleeping: 'Drooped, eyes closed, dreaming in z’s.',
 };
 
 const q = new URLSearchParams(location.search);

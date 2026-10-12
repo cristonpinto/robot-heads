@@ -11,7 +11,7 @@ export const owlHeadStates: OwlState[] = ['idle', 'thinking', 'searching', 'list
 export interface OwlHeadProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'color'> {
   /** What it is doing. Default `idle`. */
   state?: OwlState;
-  /** The box the owl rests in, in px; hops and the wings reach past it. Default `200`. */
+  /** The box the owl rests in, in px; hops and the tufts reach past it. Default `200`. */
   size?: number;
   /** Plumage. Default a deep navy. */
   color?: string;
@@ -38,9 +38,9 @@ export interface OwlHeadProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'col
 const labels = new Set<string>(owlHeadStates);
 
 /* world units the owl at rest spans, and the room around it */
-const OWL_H = 4.1;
-const OWL_CY = 0.55;
-const PAD = { side: 0.3, top: 0.3, bottom: 0.15 };
+const OWL_H = 3.3;
+const OWL_CY = 0.2;
+const PAD = { side: 0.3, top: 0.25, bottom: 0.1 };
 const FOV = 24;
 
 function hashSeed(id: string): number {
@@ -52,12 +52,13 @@ function hashSeed(id: string): number {
 const reducedMotion = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
- * A cute feathered owl: a glossy, navy and orange mascot with big amber
- * eyes, ear tufts, layered wings and glowing circuit lines, in real 3D.
- * Like `RobotHead` it shows what an agent is doing.
+ * A cute feathered owl head: glossy navy plumage, big amber eyes, orange
+ * ear tufts and brows, and glowing circuit lines, in real 3D. Like
+ * `RobotHead` it shows what an agent is doing: thinking dots, sleeping z's,
+ * listening waves, X eyes for errors.
  *
  * The element is a `size` × `size` box with the owl at rest centred in it;
- * its canvas reaches past the box, so hops and wings draw outside without
+ * its canvas reaches past the box, so hops and props draw outside without
  * taking part in layout. Each owl owns a WebGL context, so keep the count
  * to a handful on one page.
  */
